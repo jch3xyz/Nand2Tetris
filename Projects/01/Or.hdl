@@ -14,5 +14,9 @@ CHIP Or {
     OUT out;
 
     PARTS:
-    // Put your code here:
+    //(x OR y) = NOT(NOT(x) AND NOT(y))
+    // = (x Nand x) Nand (y Nand y)
+    Nand(a=a, b=a, out=nandA);
+    Nand(a=b, b=b, out=nandB);
+    Nand(a=nandA, b=nandB, out=out);
 }
